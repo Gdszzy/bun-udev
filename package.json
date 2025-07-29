@@ -1,14 +1,22 @@
 {
-  "name": "bun-udev",
-  "version": "1.0.0",
+  "name": "@gdszzy/bun-udev",
+  "version": "1.0.1",
   "main": "src/index.ts",
   "module": "src/index.ts",
   "files": [
     "src"
   ],
   "type": "module",
-  "author": "Jax",
+  "author": {
+    "name": "gogogoghost",
+    "email": "jaxyang39@gmail.com",
+    "url": "https://github.com/gogogoghost"
+  },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Gdszzy/bun-udev.git"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },

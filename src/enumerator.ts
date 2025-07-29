@@ -42,7 +42,6 @@ export class UdevEnumerator {
 
     while (listEntryPtr !== null) {
       const syspath = udev.udev_list_entry_get_name(listEntryPtr);
-      console.log(syspath)
       if (syspath) {
         let devicePtr: Pointer | null = null;
         try {

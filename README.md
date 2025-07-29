@@ -1,15 +1,50 @@
 # bun-udev
 
-To install dependencies:
+[![npm version](https://img.shields.io/npm/v/@gdszzy/bun-udev)](https://www.npmjs.com/package/@gdszzy/bun-udev)
 
-```bash
-bun install
+Using udev in bun via bun:ffi
+
+## Usage
+
+Add dependency
+
+```shell
+bun add @gdszzy/bun-udev
 ```
 
-To run:
+Enumerator
 
-```bash
-bun run index.ts
+```js
+import { UdevContext, UdevEnumerator } from '@gdszzy/bun-udev'
+
+const context = new UdevContext()
+const enumerator = new UdevEnumerator(context)
+
+enumerator.addMatchSubsystem('usb')
+
+const list = enumerator.scanDevices()
+for (const item of list) {
+  console.log(item)
+}
+
+// clean
+enumerator.dispose()
+context.dispose()
 ```
 
-This project was created using `bun init` in bun v1.2.19. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+Monitor
+
+```js
+import { UdevContext, UdevMonitor } from '@gdszzy/bun-udev'
+
+const context = new UdevContext()
+const monitor = new UdevMonitor(context, 'udev', (info) => {
+  console.log(info)
+})
+monitor.start()
+
+// clean
+monitor.stop()
+monitor.dispose()
+context.dispose()
+```
