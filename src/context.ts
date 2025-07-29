@@ -30,11 +30,13 @@ export interface UdevDeviceInfo {
   devtype?: string | null;
   sysname?: string | null;
   devnode?: string | null;
-  properties?: { [key: string]: string | null };
+  properties: { [key: string]: string | null };
 }
 
 export function getUdevDeviceInfo(devicePtr: Pointer): UdevDeviceInfo {
-  const info: UdevDeviceInfo = {};
+  const info: UdevDeviceInfo = {
+    properties: {}
+  };
   if (devicePtr === 0) return info;
 
   info.action = udev.udev_device_get_action(devicePtr)?.toString();
@@ -43,8 +45,6 @@ export function getUdevDeviceInfo(devicePtr: Pointer): UdevDeviceInfo {
   info.devtype = udev.udev_device_get_devtype(devicePtr)?.toString();
   info.sysname = udev.udev_device_get_sysname(devicePtr)?.toString();
   info.devnode = udev.udev_device_get_devnode(devicePtr)?.toString();
-
-  info.properties = {};
 
   let propEntry = udev.udev_device_get_properties_list_entry(devicePtr)
   while (propEntry != null) {
