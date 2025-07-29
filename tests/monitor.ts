@@ -5,6 +5,7 @@ const context = new UdevContext()
 const monitor = new UdevMonitor(context, "udev", (info) => {
   console.log(info)
 })
+monitor.addFilter("usb")
 monitor.start()
 
 setTimeout(() => {

@@ -46,7 +46,7 @@ export class UdevMonitor {
   }
 
   addFilter(subsystem: string, devtype: string | null = null): this {
-    const result = udev.udev_monitor_filter_add_match_subsystem_devtype(this.monitor, Buffer.from(subsystem + '\0'), Buffer.from(devtype + '\0'));
+    const result = udev.udev_monitor_filter_add_match_subsystem_devtype(this.monitor, Buffer.from(subsystem + '\0'), devtype == null ? null : Buffer.from(devtype + '\0'));
     if (result < 0) {
       throw new Error(`Failed to add monitor filter for subsystem '${subsystem}' and devtype '${devtype}'.`);
     }
