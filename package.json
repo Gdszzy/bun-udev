@@ -1,0 +1,18 @@
+{
+  "name": "bun-udev",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "files": [
+    "src"
+  ],
+  "type": "module",
+  "author": "Jax",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
